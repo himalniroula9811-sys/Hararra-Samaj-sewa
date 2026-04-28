@@ -1,81 +1,172 @@
-8<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hararra Samaj Sewa | Support</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-    
+    <title>Hararra Samaj Sewa</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-        body { background-color: #f8fafc; color: #1e293b; line-height: 1.6; }
-        
-        header { background: #ffffff; padding: 1.2rem 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e2e8f0; position: sticky; top: 0; z-index: 1000; }
-        .logo { font-size: 1.25rem; font-weight: 600; color: #0f172a; }
-        
-        section { padding: 40px 6%; max-width: 800px; margin: auto; }
-        h2 { font-size: 1.5rem; font-weight: 600; color: #0f172a; margin-bottom: 24px; text-align: center; }
+        :root {
+            --bg-cream: #fdfaf1;
+            --header-text: #064e3b;
+            --card-green: #dcf1d8;
+            --accent-coral: #f88379;
+            --esewa-green: #1a7b32;
+        }
 
-        /* Committee Section */
-        .committee-list { background: white; border-radius: 16px; padding: 20px; border: 1px solid #e2e8f0; margin-bottom: 30px; }
-        .member { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #f1f5f9; }
-        .member:last-child { border-bottom: none; }
-        .member-name { font-weight: 500; color: #334155; }
-        .member-role { color: #64748b; font-size: 0.9rem; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: var(--bg-cream); font-family: 'Poppins', sans-serif; color: #333; }
 
-        /* Donation Card (Modern Style) */
-        .donation-card { background: #ffffff; border-radius: 20px; padding: 30px; border: 1px solid #e2e8f0; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); text-align: center; }
-        .esewa-badge { background: #41a124; color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 600; display: inline-block; margin-bottom: 10px; }
-        .phone-number { font-size: 1.8rem; font-weight: 600; color: #0f172a; letter-spacing: 1px; display: block; margin: 10px 0; }
-        .account-name { color: #64748b; font-size: 1rem; margin-bottom: 20px; display: block; }
-        
-        .qr-area { background: #f1f5f9; width: 180px; height: 180px; margin: 20px auto; border-radius: 12px; display: flex; align-items: center; justify-content: center; border: 2px dashed #cbd5e1; color: #94a3b8; font-size: 0.8rem; }
+        /* Navbar */
+        nav {
+            background: white;
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #eee;
+        }
+        .nav-links { display: flex; list-style: none; gap: 20px; }
+        .nav-links li a { text-decoration: none; color: #777; font-size: 0.9rem; }
+        .nav-links li a.active { color: var(--accent-coral); border-bottom: 2px solid var(--accent-coral); }
 
-        footer { text-align: center; padding: 40px; font-size: 0.85rem; color: #94a3b8; }
+        /* Main Heading */
+        .main-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            color: var(--header-text);
+            text-align: center;
+            margin: 50px 0;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            text-align: center;
+            margin-bottom: 30px;
+            color: #1a2e28;
+        }
+
+        section { max-width: 1000px; margin: 0 auto 60px; padding: 0 20px; }
+
+        /* Committee Cards */
+        .committee-container {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .member-card {
+            background: var(--card-green);
+            flex: 1;
+            min-width: 250px;
+            padding: 40px 20px;
+            border-radius: 12px;
+            text-align: center;
+        }
+        .avatar {
+            width: 90px;
+            height: 90px;
+            background: #0d4d42;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+        }
+        .member-card h3 { font-size: 1.2rem; margin-bottom: 5px; }
+        .member-card p { color: #888; font-size: 0.9rem; }
+
+        /* Donation Section */
+        .donation-box {
+            background-color: var(--accent-coral);
+            padding: 50px 20px;
+            border-radius: 15px;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+        .badge {
+            background: var(--esewa-green);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+        .phone {
+            font-size: 3.2rem;
+            font-weight: 700;
+            display: block;
+            margin: 10px 0;
+            color: #064e3b;
+        }
+        .registered { font-size: 1.1rem; margin-bottom: 25px; opacity: 0.9; }
+        .registered strong { color: #064e3b; }
+
+        .form-btn {
+            background: #d1d5db;
+            color: black;
+            padding: 12px 60px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+        }
+
+        /* Mockup Desktop Image (Bottom Decoration) */
+        .desktop-mockup {
+            width: 100%;
+            max-width: 800px;
+            margin: -40px auto 0;
+            display: block;
+        }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="logo">Hararra Samaj Sewa</div>
-    </header>
+    <nav>
+        <div style="font-weight: bold;">👤</div>
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Executive Committee</a></li>
+            <li><a href="#">Donations</a></li>
+            <li><a href="#" class="active">Contact</a></li>
+        </ul>
+    </nav>
+
+    <h1 class="main-title">Hararra Samaj Sewa</h1>
 
     <section>
-        <h2>Executive Committee</h2>
-        <div class="committee-list">
-            <div class="member">
-                <span class="member-name">Himal Niroula</span>
-                <span class="member-role">President</span>
+        <h2 class="section-title">Executive Committee</h2>
+        <div class="committee-container">
+            <div class="member-card">
+                <div class="avatar"></div>
+                <h3>Himal Niroula</h3>
+                <p>President</p>
             </div>
-            <div class="member">
-                <span class="member-name">Deepu kumar yadav</span>
-                <span class="member-role">Secretary</span>
+            <div class="member-card">
+                <div class="avatar"></div>
+                <h3>Deepu kumar yadav</h3>
+                <p>Secretary</p>
             </div>
-            <div class="member">
-                <span class="member-name">Salon kharal</span>
-                <span class="member-role">Treasurer</span>
+            <div class="member-card">
+                <div class="avatar"></div>
+                <h3>Salon kharal</h3>
+                <p>Treasurer</p>
             </div>
         </div>
     </section>
 
     <section>
-        <h2>Donation Collection</h2>
-        <div class="donation-card">
-            <span class="esewa-badge">eSewa / Khalti / Fonepay</span>
-            <span class="phone-number">9818760875</span> <span class="account-name">Registered to: <strong>Salon kharal </strong></span>
-            
-            <div class="qr-area">
-                        
-            </div>
-            
-            <p style="font-size: 0.9rem; color: #64748b;">Your support helps us serve the community in Biratnagar and beyond.</p>
+        <h2 class="section-title">Donation Collection</h2>
+        <div class="donation-box">
+            <div class="badge">eSewa / Khalti / Fonepay</div>
+            <span class="phone">9818760875</span>
+            <p class="registered">Registered to: <strong>Salon kharal</strong></p>
+            <a href="#" class="form-btn">Donation Form</a>
         </div>
     </section>
-
-    <footer>
-        &copy; 2026 Hararra Samaj Sewa <br>
-        Biratnagar, Nepal
-    </footer>
 
 </body>
 </html>
