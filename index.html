@@ -44,7 +44,7 @@ nav a{
   font-weight:600;
 }
 
-/* HERO SLIDER */
+/* HERO */
 .hero{
   height:300px;
   color:white;
@@ -56,6 +56,7 @@ nav a{
   text-align:center;
   background-size:cover;
   transition:1s;
+  background-image:url('https://images.unsplash.com/photo-1523240795612-9a054b0db644');
 }
 
 /* SECTIONS */
@@ -82,6 +83,16 @@ section{
   border-radius:5px;
   text-decoration:none;
   margin-top:10px;
+  cursor:pointer;
+}
+
+/* INPUT */
+input,textarea{
+  width:100%;
+  padding:10px;
+  margin-top:10px;
+  border:1px solid #ddd;
+  border-radius:5px;
 }
 
 /* GALLERY */
@@ -91,20 +102,15 @@ section{
   gap:10px;
 }
 
+.gallery div{
+  text-align:center;
+}
+
 .gallery img{
   width:150px;
   height:150px;
   object-fit:cover;
   border-radius:10px;
-}
-
-/* FORM */
-input,textarea{
-  width:100%;
-  padding:10px;
-  margin-top:10px;
-  border:1px solid #ddd;
-  border-radius:5px;
 }
 
 footer{
@@ -132,13 +138,13 @@ footer{
   <a href="#contact">Contact</a>
 </nav>
 
-<!-- HERO SLIDER -->
+<!-- HERO -->
 <div class="hero" id="hero">
   Together We Build Humanity
 </div>
 
 <!-- HOME -->
-<section id="home">
+<section>
   <div class="card">
     <h2>Welcome</h2>
     <p>We help society through education, health support, and emergency relief programs.</p>
@@ -146,7 +152,7 @@ footer{
 </section>
 
 <!-- ABOUT -->
-<section id="about">
+<section>
   <div class="card">
     <h2>About Us</h2>
     <p>Youth-driven NGO working for social change and humanity support.</p>
@@ -154,17 +160,16 @@ footer{
 </section>
 
 <!-- DONATION -->
-<section id="donation">
+<section>
   <div class="card">
     <h2>Donate (eSewa)</h2>
-    <p>Support our mission and help those in need.</p>
     <p><b>eSewa:</b> 9811315622</p>
     <a class="btn" href="https://esewa.com.np" target="_blank">Donate Now</a>
   </div>
 </section>
 
 <!-- TEAM -->
-<section id="team">
+<section>
   <div class="card">
     <h2>Our Committee</h2>
   </div>
@@ -185,15 +190,15 @@ footer{
 </section>
 
 <!-- CONTACT FORM -->
-<section id="contact">
+<section>
   <div class="card">
     <h2>Contact / Join Us</h2>
 
-    <input type="text" placeholder="Your Name">
-    <input type="text" placeholder="Phone Number">
-    <textarea placeholder="Message"></textarea>
+    <input type="text" id="name" placeholder="Your Name">
+    <input type="text" id="phone" placeholder="Phone Number">
+    <textarea id="msg" placeholder="Message"></textarea>
 
-    <a class="btn" href="#">Send</a>
+    <a class="btn" onclick="sendForm()">Send Message</a>
   </div>
 </section>
 
@@ -203,7 +208,7 @@ footer{
 
 <script>
 
-/* HERO SLIDESHOW */
+/* HERO SLIDER SAFE */
 let images = [
   "https://images.unsplash.com/photo-1523240795612-9a054b0db644",
   "https://images.unsplash.com/photo-1509099836639-18ba1795216d",
@@ -211,25 +216,55 @@ let images = [
 ];
 
 let i = 0;
-setInterval(()=>{
-  document.getElementById("hero").style.backgroundImage = "url("+images[i]+")";
-  i = (i+1)%images.length;
+
+setInterval(function(){
+  let hero = document.getElementById("hero");
+  if(hero){
+    hero.style.backgroundImage = "url("+images[i]+")";
+    i = (i+1)%images.length;
+  }
 },3000);
 
-/* PHOTO UPLOAD */
+/* PHOTO UPLOAD SAFE */
 function upload(event){
   let files = event.target.files;
   let gallery = document.getElementById("gallery");
 
   for(let f of files){
     let reader = new FileReader();
+
     reader.onload = function(){
+      let name = prompt("Enter Photo Name:");
+
+      let div = document.createElement("div");
+
       let img = document.createElement("img");
       img.src = reader.result;
-      gallery.appendChild(img);
+
+      let cap = document.createElement("p");
+      cap.innerText = name || "No Name";
+
+      div.appendChild(img);
+      div.appendChild(cap);
+      gallery.appendChild(div);
     }
+
     reader.readAsDataURL(f);
   }
+}
+
+/* FIXED CONTACT FORM */
+function sendForm(){
+  let name = document.getElementById("name").value;
+  let phone = document.getElementById("phone").value;
+  let msg = document.getElementById("msg").value;
+
+  if(name === "" || phone === "" || msg === ""){
+    alert("Please fill all fields!");
+    return;
+  }
+
+  alert("Thank you " + name + "! Your message has been sent.");
 }
 
 </script>
