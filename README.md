@@ -1,0 +1,1 @@
+Hararra-Samaj-sewa is a digital initiative dedicated to social service and community welfare. Built on the pillars of selflessness and dedication, this project aims to leverage technology to serve society and bridge community needs.
