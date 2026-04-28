@@ -1,172 +1,218 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hararra Samaj Sewa</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg-cream: #fdfaf1;
-            --header-text: #064e3b;
-            --card-green: #dcf1d8;
-            --accent-coral: #f88379;
-            --esewa-green: #1a7b32;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hararra Samaj Sewa | A Rise of Hope</title>
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background-color: var(--bg-cream); font-family: 'Poppins', sans-serif; color: #333; }
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
 
-        /* Navbar */
-        nav {
-            background: white;
-            padding: 15px 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid #eee;
-        }
-        .nav-links { display: flex; list-style: none; gap: 20px; }
-        .nav-links li a { text-decoration: none; color: #777; font-size: 0.9rem; }
-        .nav-links li a.active { color: var(--accent-coral); border-bottom: 2px solid var(--accent-coral); }
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Roboto', sans-serif;
+}
 
-        /* Main Heading */
-        .main-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.8rem;
-            color: var(--header-text);
-            text-align: center;
-            margin: 50px 0;
-        }
+body{
+  background:#f4f6f9;
+}
 
-        .section-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            text-align: center;
-            margin-bottom: 30px;
-            color: #1a2e28;
-        }
+header{
+  background:linear-gradient(135deg,#0d6efd,#00bcd4);
+  color:white;
+  text-align:center;
+  padding:25px;
+}
 
-        section { max-width: 1000px; margin: 0 auto 60px; padding: 0 20px; }
+header img{
+  width:90px;
+  height:90px;
+  border-radius:50%;
+  object-fit:cover;
+  background:white;
+  padding:5px;
+}
 
-        /* Committee Cards */
-        .committee-container {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        .member-card {
-            background: var(--card-green);
-            flex: 1;
-            min-width: 250px;
-            padding: 40px 20px;
-            border-radius: 12px;
-            text-align: center;
-        }
-        .avatar {
-            width: 90px;
-            height: 90px;
-            background: #0d4d42;
-            border-radius: 50%;
-            margin: 0 auto 20px;
-        }
-        .member-card h3 { font-size: 1.2rem; margin-bottom: 5px; }
-        .member-card p { color: #888; font-size: 0.9rem; }
+nav{
+  background:white;
+  display:flex;
+  justify-content:center;
+  gap:20px;
+  padding:15px;
+  box-shadow:0 2px 5px rgba(0,0,0,0.1);
+}
 
-        /* Donation Section */
-        .donation-box {
-            background-color: var(--accent-coral);
-            padding: 50px 20px;
-            border-radius: 15px;
-            text-align: center;
-            color: white;
-            position: relative;
-        }
-        .badge {
-            background: var(--esewa-green);
-            color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: bold;
-            display: inline-block;
-            margin-bottom: 15px;
-        }
-        .phone {
-            font-size: 3.2rem;
-            font-weight: 700;
-            display: block;
-            margin: 10px 0;
-            color: #064e3b;
-        }
-        .registered { font-size: 1.1rem; margin-bottom: 25px; opacity: 0.9; }
-        .registered strong { color: #064e3b; }
+nav a{
+  text-decoration:none;
+  color:#0d6efd;
+  font-weight:500;
+}
 
-        .form-btn {
-            background: #d1d5db;
-            color: black;
-            padding: 12px 60px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            display: inline-block;
-        }
+.hero{
+  background:url('https://images.unsplash.com/photo-1523240795612-9a054b0db644') center/cover;
+  height:300px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:white;
+  font-size:26px;
+  font-weight:bold;
+  text-align:center;
+}
 
-        /* Mockup Desktop Image (Bottom Decoration) */
-        .desktop-mockup {
-            width: 100%;
-            max-width: 800px;
-            margin: -40px auto 0;
-            display: block;
-        }
-    </style>
+section{
+  max-width:1100px;
+  margin:auto;
+  padding:30px 20px;
+}
+
+.card{
+  background:white;
+  padding:20px;
+  margin:15px 0;
+  border-radius:10px;
+  box-shadow:0 2px 10px rgba(0,0,0,0.08);
+}
+
+.team-card{
+  border-left:5px solid #0d6efd;
+}
+
+input{
+  margin-top:10px;
+}
+
+#gallery{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:15px;
+}
+
+#gallery img{
+  width:150px;
+  height:150px;
+  object-fit:cover;
+  border-radius:10px;
+  box-shadow:0 2px 8px rgba(0,0,0,0.2);
+}
+
+footer{
+  background:#0d6efd;
+  color:white;
+  text-align:center;
+  padding:20px;
+}
+</style>
 </head>
+
 <body>
 
-    <nav>
-        <div style="font-weight: bold;">👤</div>
-        <ul class="nav-links">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Executive Committee</a></li>
-            <li><a href="#">Donations</a></li>
-            <li><a href="#" class="active">Contact</a></li>
-        </ul>
-    </nav>
+<header>
+  <img src="logo.png" id="mainLogo">
+  <h1>Hararra Samaj Sewa</h1>
+  <p>A Rise of Hope</p>
+</header>
 
-    <h1 class="main-title">Hararra Samaj Sewa</h1>
+<nav>
+  <a href="#home">Home</a>
+  <a href="#team">Team</a>
+  <a href="#upload">Upload</a>
+  <a href="#contact">Contact</a>
+</nav>
 
-    <section>
-        <h2 class="section-title">Executive Committee</h2>
-        <div class="committee-container">
-            <div class="member-card">
-                <div class="avatar"></div>
-                <h3>Himal Niroula</h3>
-                <p>President</p>
-            </div>
-            <div class="member-card">
-                <div class="avatar"></div>
-                <h3>Deepu kumar yadav</h3>
-                <p>Secretary</p>
-            </div>
-            <div class="member-card">
-                <div class="avatar"></div>
-                <h3>Salon kharal</h3>
-                <p>Treasurer</p>
-            </div>
-        </div>
-    </section>
+<div class="hero">
+  Together We Build A Better Society
+</div>
 
-    <section>
-        <h2 class="section-title">Donation Collection</h2>
-        <div class="donation-box">
-            <div class="badge">eSewa / Khalti / Fonepay</div>
-            <span class="phone">9818760875</span>
-            <p class="registered">Registered to: <strong>Salon kharal</strong></p>
-            <a href="#" class="form-btn">Donation Form</a>
-        </div>
-    </section>
+<section id="home">
+  <div class="card">
+    <h2>Welcome</h2>
+    <p>We are a non-profit organization helping society through education, health, and social service.</p>
+  </div>
+</section>
+
+<section id="team">
+  <div class="card">
+    <h2>Our Committee</h2>
+  </div>
+
+  <div class="card team-card">
+    <h3>President</h3>
+    <p>Himal Niraula</p>
+  </div>
+
+  <div class="card team-card">
+    <h3>Vice President</h3>
+    <p>Nabin Bhandari</p>
+  </div>
+
+  <div class="card team-card">
+    <h3>Secretary</h3>
+    <p>Deepu Kumar Yadav</p>
+  </div>
+
+  <div class="card team-card">
+    <h3>Treasurer</h3>
+    <p>Salon Kharal</p>
+  </div>
+</section>
+
+<section id="upload">
+  <div class="card">
+    <h2>Upload Logo</h2>
+    <input type="file" accept="image/*" onchange="loadLogo(event)">
+  </div>
+
+  <div class="card">
+    <h2>Upload Photos</h2>
+    <input type="file" accept="image/*" multiple onchange="loadPhotos(event)">
+    <div id="gallery"></div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="card">
+    <h2>Contact Us</h2>
+    <p>📍 Hararra, Nepal</p>
+    <p>📱 9811315622</p>
+  </div>
+</section>
+
+<footer>
+  © 2026 Hararra Samaj Sewa
+</footer>
+
+<script>
+// LOGO UPLOAD
+function loadLogo(event){
+  let reader = new FileReader();
+  reader.onload = function(){
+    document.getElementById('mainLogo').src = reader.result;
+  }
+  reader.readAsDataURL(event.target.files[0]);
+}
+
+// PHOTO UPLOAD
+function loadPhotos(event){
+  let files = event.target.files;
+  let gallery = document.getElementById('gallery');
+
+  for(let i=0;i<files.length;i++){
+    let reader = new FileReader();
+
+    reader.onload = function(){
+      let img = document.createElement('img');
+      img.src = reader.result;
+      gallery.appendChild(img);
+    }
+
+    reader.readAsDataURL(files[i]);
+  }
+}
+</script>
 
 </body>
 </html>
