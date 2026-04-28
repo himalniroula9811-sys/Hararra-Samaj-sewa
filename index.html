@@ -8,17 +8,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
 
 <style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:'Roboto', sans-serif;
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Roboto',sans-serif;}
 
-body{
-  background:#f4f6f9;
-}
+body{background:#f4f6f9;}
 
+/* HEADER */
 header{
   background:linear-gradient(135deg,#0d6efd,#00bcd4);
   color:white;
@@ -35,33 +29,36 @@ header img{
   padding:5px;
 }
 
+/* NAV */
 nav{
   background:white;
   display:flex;
   justify-content:center;
   gap:20px;
   padding:15px;
-  box-shadow:0 2px 5px rgba(0,0,0,0.1);
 }
 
 nav a{
   text-decoration:none;
   color:#0d6efd;
-  font-weight:500;
+  font-weight:600;
 }
 
+/* HERO SLIDER */
 .hero{
-  background:url('https://images.unsplash.com/photo-1523240795612-9a054b0db644') center/cover;
   height:300px;
+  color:white;
   display:flex;
   align-items:center;
   justify-content:center;
-  color:white;
   font-size:26px;
   font-weight:bold;
   text-align:center;
+  background-size:cover;
+  transition:1s;
 }
 
+/* SECTIONS */
 section{
   max-width:1100px;
   margin:auto;
@@ -76,27 +73,38 @@ section{
   box-shadow:0 2px 10px rgba(0,0,0,0.08);
 }
 
-.team-card{
-  border-left:5px solid #0d6efd;
-}
-
-input{
+/* BUTTON */
+.btn{
+  display:inline-block;
+  padding:10px 18px;
+  background:#00bcd4;
+  color:white;
+  border-radius:5px;
+  text-decoration:none;
   margin-top:10px;
 }
 
-#gallery{
+/* GALLERY */
+.gallery{
   display:flex;
   flex-wrap:wrap;
   gap:10px;
-  margin-top:15px;
 }
 
-#gallery img{
+.gallery img{
   width:150px;
   height:150px;
   object-fit:cover;
   border-radius:10px;
-  box-shadow:0 2px 8px rgba(0,0,0,0.2);
+}
+
+/* FORM */
+input,textarea{
+  width:100%;
+  padding:10px;
+  margin-top:10px;
+  border:1px solid #ddd;
+  border-radius:5px;
 }
 
 footer{
@@ -111,73 +119,81 @@ footer{
 <body>
 
 <header>
-  <img src="logo.png" id="mainLogo">
+  <img src="logo.png" id="logo">
   <h1>Hararra Samaj Sewa</h1>
   <p>A Rise of Hope</p>
 </header>
 
 <nav>
   <a href="#home">Home</a>
+  <a href="#about">About</a>
+  <a href="#donation">Donate</a>
   <a href="#team">Team</a>
-  <a href="#upload">Upload</a>
   <a href="#contact">Contact</a>
 </nav>
 
-<div class="hero">
-  Together We Build A Better Society
+<!-- HERO SLIDER -->
+<div class="hero" id="hero">
+  Together We Build Humanity
 </div>
 
+<!-- HOME -->
 <section id="home">
   <div class="card">
     <h2>Welcome</h2>
-    <p>We are a non-profit organization helping society through education, health, and social service.</p>
+    <p>We help society through education, health support, and emergency relief programs.</p>
   </div>
 </section>
 
+<!-- ABOUT -->
+<section id="about">
+  <div class="card">
+    <h2>About Us</h2>
+    <p>Youth-driven NGO working for social change and humanity support.</p>
+  </div>
+</section>
+
+<!-- DONATION -->
+<section id="donation">
+  <div class="card">
+    <h2>Donate (eSewa)</h2>
+    <p>Support our mission and help those in need.</p>
+    <p><b>eSewa:</b> 9811315622</p>
+    <a class="btn" href="https://esewa.com.np" target="_blank">Donate Now</a>
+  </div>
+</section>
+
+<!-- TEAM -->
 <section id="team">
   <div class="card">
     <h2>Our Committee</h2>
   </div>
 
-  <div class="card team-card">
-    <h3>President</h3>
-    <p>Himal Niraula</p>
-  </div>
-
-  <div class="card team-card">
-    <h3>Vice President</h3>
-    <p>Nabin Bhandari</p>
-  </div>
-
-  <div class="card team-card">
-    <h3>Secretary</h3>
-    <p>Deepu Kumar Yadav</p>
-  </div>
-
-  <div class="card team-card">
-    <h3>Treasurer</h3>
-    <p>Salon Kharal</p>
-  </div>
+  <div class="card">President: Himal Niraula</div>
+  <div class="card">Vice President: Nabin Bhandari</div>
+  <div class="card">Secretary: Deepu Kumar Yadav</div>
+  <div class="card">Treasurer: Salon Kharal</div>
 </section>
 
-<section id="upload">
-  <div class="card">
-    <h2>Upload Logo</h2>
-    <input type="file" accept="image/*" onchange="loadLogo(event)">
-  </div>
-
+<!-- UPLOAD -->
+<section>
   <div class="card">
     <h2>Upload Photos</h2>
-    <input type="file" accept="image/*" multiple onchange="loadPhotos(event)">
-    <div id="gallery"></div>
+    <input type="file" multiple onchange="upload(event)">
+    <div class="gallery" id="gallery"></div>
   </div>
 </section>
 
+<!-- CONTACT FORM -->
 <section id="contact">
   <div class="card">
-    <h2>Contact Us</h2>
-    <p>📍 Hararra, Nepal</p>
-    <p>📱 9811315622</p>
+    <h2>Contact / Join Us</h2>
+
+    <input type="text" placeholder="Your Name">
+    <input type="text" placeholder="Phone Number">
+    <textarea placeholder="Message"></textarea>
+
+    <a class="btn" href="#">Send</a>
   </div>
 </section>
 
@@ -186,32 +202,36 @@ footer{
 </footer>
 
 <script>
-// LOGO UPLOAD
-function loadLogo(event){
-  let reader = new FileReader();
-  reader.onload = function(){
-    document.getElementById('mainLogo').src = reader.result;
-  }
-  reader.readAsDataURL(event.target.files[0]);
-}
 
-// PHOTO UPLOAD
-function loadPhotos(event){
+/* HERO SLIDESHOW */
+let images = [
+  "https://images.unsplash.com/photo-1523240795612-9a054b0db644",
+  "https://images.unsplash.com/photo-1509099836639-18ba1795216d",
+  "https://images.unsplash.com/photo-1524178232363-1fb2b075b655"
+];
+
+let i = 0;
+setInterval(()=>{
+  document.getElementById("hero").style.backgroundImage = "url("+images[i]+")";
+  i = (i+1)%images.length;
+},3000);
+
+/* PHOTO UPLOAD */
+function upload(event){
   let files = event.target.files;
-  let gallery = document.getElementById('gallery');
+  let gallery = document.getElementById("gallery");
 
-  for(let i=0;i<files.length;i++){
+  for(let f of files){
     let reader = new FileReader();
-
     reader.onload = function(){
-      let img = document.createElement('img');
+      let img = document.createElement("img");
       img.src = reader.result;
       gallery.appendChild(img);
     }
-
-    reader.readAsDataURL(files[i]);
+    reader.readAsDataURL(f);
   }
 }
+
 </script>
 
 </body>
