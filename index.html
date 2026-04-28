@@ -21,8 +21,7 @@ header{
 }
 
 header img{
-  width:90px;
-  height:90px;
+  width:90px;height:90px;
   border-radius:50%;
   object-fit:cover;
   background:white;
@@ -47,15 +46,14 @@ nav a{
 /* HERO */
 .hero{
   height:300px;
-  color:white;
   display:flex;
   align-items:center;
   justify-content:center;
+  color:white;
   font-size:26px;
   font-weight:bold;
   text-align:center;
   background-size:cover;
-  transition:1s;
   background-image:url('https://images.unsplash.com/photo-1523240795612-9a054b0db644');
 }
 
@@ -83,7 +81,6 @@ section{
   border-radius:5px;
   text-decoration:none;
   margin-top:10px;
-  cursor:pointer;
 }
 
 /* INPUT */
@@ -100,10 +97,6 @@ input,textarea{
   display:flex;
   flex-wrap:wrap;
   gap:10px;
-}
-
-.gallery div{
-  text-align:center;
 }
 
 .gallery img{
@@ -138,67 +131,60 @@ footer{
   <a href="#contact">Contact</a>
 </nav>
 
-<!-- HERO -->
-<div class="hero" id="hero">
-  Together We Build Humanity
-</div>
+<div class="hero">Together We Build Humanity</div>
 
 <!-- HOME -->
-<section>
+<section id="home">
   <div class="card">
     <h2>Welcome</h2>
-    <p>We help society through education, health support, and emergency relief programs.</p>
+    <p>We are a youth-led NGO working to support needy people, education, health and emergency relief programs.</p>
   </div>
 </section>
 
 <!-- ABOUT -->
-<section>
+<section id="about">
   <div class="card">
     <h2>About Us</h2>
-    <p>Youth-driven NGO working for social change and humanity support.</p>
+    <p>Hararra Samaj Sewa is committed to humanity, equality and social service without discrimination.</p>
   </div>
 </section>
 
 <!-- DONATION -->
-<section>
+<section id="donation">
   <div class="card">
     <h2>Donate (eSewa)</h2>
-    <p><b>eSewa:</b> 9811315622</p>
+    <p><b>eSewa ID:</b> 9811315622</p>
     <a class="btn" href="https://esewa.com.np" target="_blank">Donate Now</a>
   </div>
 </section>
 
 <!-- TEAM -->
-<section>
-  <div class="card">
-    <h2>Our Committee</h2>
-  </div>
-
+<section id="team">
+  <div class="card"><h2>Our Committee</h2></div>
   <div class="card">President: Himal Niraula</div>
   <div class="card">Vice President: Nabin Bhandari</div>
   <div class="card">Secretary: Deepu Kumar Yadav</div>
   <div class="card">Treasurer: Salon Kharal</div>
 </section>
 
-<!-- UPLOAD -->
+<!-- PHOTO UPLOAD -->
 <section>
   <div class="card">
-    <h2>Upload Photos</h2>
-    <input type="file" multiple onchange="upload(event)">
+    <h2>Upload Photos (Firebase Ready)</h2>
+    <input type="file" id="fileInput">
+    <button class="btn" onclick="uploadPhoto()">Upload</button>
     <div class="gallery" id="gallery"></div>
   </div>
 </section>
 
-<!-- CONTACT FORM -->
-<section>
+<!-- CONTACT -->
+<section id="contact">
   <div class="card">
-    <h2>Contact / Join Us</h2>
-
-    <input type="text" id="name" placeholder="Your Name">
-    <input type="text" id="phone" placeholder="Phone Number">
+    <h2>Contact Us</h2>
+    <input id="name" placeholder="Name">
+    <input id="phone" placeholder="Phone">
     <textarea id="msg" placeholder="Message"></textarea>
-
-    <a class="btn" onclick="sendForm()">Send Message</a>
+    <button class="btn" onclick="sendData()">Send</button>
   </div>
 </section>
 
@@ -207,66 +193,52 @@ footer{
 </footer>
 
 <script>
-
-/* HERO SLIDER SAFE */
-let images = [
-  "https://images.unsplash.com/photo-1523240795612-9a054b0db644",
-  "https://images.unsplash.com/photo-1509099836639-18ba1795216d",
-  "https://images.unsplash.com/photo-1524178232363-1fb2b075b655"
+/* HERO SLIDER */
+let imgs=[
+"https://images.unsplash.com/photo-1523240795612-9a054b0db644",
+"https://images.unsplash.com/photo-1509099836639-18ba1795216d"
 ];
-
-let i = 0;
-
-setInterval(function(){
-  let hero = document.getElementById("hero");
-  if(hero){
-    hero.style.backgroundImage = "url("+images[i]+")";
-    i = (i+1)%images.length;
-  }
+let i=0;
+setInterval(()=>{
+document.querySelector(".hero").style.backgroundImage="url("+imgs[i]+")";
+i=(i+1)%imgs.length;
 },3000);
 
-/* PHOTO UPLOAD SAFE */
-function upload(event){
-  let files = event.target.files;
-  let gallery = document.getElementById("gallery");
+/* FIREBASE CONFIG (ADD YOURS) */
+const firebaseConfig = {
+  apiKey: "YOUR_API_KEY",
+  authDomain: "YOUR_PROJECT.firebaseapp.com",
+  projectId: "YOUR_PROJECT",
+  storageBucket: "YOUR_PROJECT.appspot.com",
+  messagingSenderId: "XXXX",
+  appId: "XXXX"
+};
 
-  for(let f of files){
-    let reader = new FileReader();
-
-    reader.onload = function(){
-      let name = prompt("Enter Photo Name:");
-
-      let div = document.createElement("div");
-
-      let img = document.createElement("img");
-      img.src = reader.result;
-
-      let cap = document.createElement("p");
-      cap.innerText = name || "No Name";
-
-      div.appendChild(img);
-      div.appendChild(cap);
-      gallery.appendChild(div);
-    }
-
-    reader.readAsDataURL(f);
+/* PHOTO UPLOAD (DEMO - LOCAL) */
+function uploadPhoto(){
+  let file=document.getElementById("fileInput").files[0];
+  let reader=new FileReader();
+  reader.onload=function(){
+    let img=document.createElement("img");
+    img.src=reader.result;
+    document.getElementById("gallery").appendChild(img);
   }
+  reader.readAsDataURL(file);
 }
 
-/* FIXED CONTACT FORM */
-function sendForm(){
-  let name = document.getElementById("name").value;
-  let phone = document.getElementById("phone").value;
-  let msg = document.getElementById("msg").value;
+/* CONTACT FORM */
+function sendData(){
+  let name=document.getElementById("name").value;
+  let phone=document.getElementById("phone").value;
+  let msg=document.getElementById("msg").value;
 
-  if(name === "" || phone === "" || msg === ""){
-    alert("Please fill all fields!");
+  if(!name||!phone||!msg){
+    alert("Fill all fields");
     return;
   }
 
-  alert("Thank you " + name + "! Your message has been sent.");
+  alert("Message sent successfully!");
 }
-
 </script>
 
 </body>
